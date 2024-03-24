@@ -1,2 +1,3 @@
 # TMR2024
-YeS
+
+Challenges for Mexican Robotics Tournament 2024
