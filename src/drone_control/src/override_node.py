@@ -4,12 +4,12 @@ from mavros_msgs.msg import State
 from mavros_msgs.srv import CommandBool, CommandBoolRequest, SetMode, SetModeRequest
 import sys
 import rosservice
+from std_msgs.msg import Bool
 
 class OverrideNode(object):
     def __init__(self):
         rospy.init_node('override_node', anonymous=False)
-        self.armed_state = False
-        self.drone_status = State()
+        self.drone_state = State()
         self.state_sub = rospy.Subscriber("mavros/state", State, callback = self.refresh_state)
 
     def refresh_state(self, msg):
@@ -19,8 +19,8 @@ class OverrideNode(object):
         while not rospy.is_shutdown():
             input()
             rospy.loginfo("Toggle arm or dissarm")
-            self.armed_state = not self.armed_state
-            rosservice.call_service("/mavros/cmd/arming", self.armed_state)
+            self.drone_state.armed = not self.drone_state.armed
+            rosservice.call_service("/mavros/cmd/arming", self.drone_state)
         
 if __name__ == '__main__':
     print("--OVERRIDER CONSOLE--")
