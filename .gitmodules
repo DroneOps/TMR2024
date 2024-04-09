@@ -4,3 +4,9 @@
 [submodule "src/mavros"]
 	path = src/mavros
 	url = git@github.com:mavlink/mavros.git
+[submodule "src/ardupilot"]
+	path = src/ardupilot
+	url = git@github.com:ArduPilot/ardupilot.git
+[submodule "src/ardupilot_gazebo"]
+	path = src/ardupilot_gazebo
+	url = https://github.com/khancyr/ardupilot_gazebo.git
